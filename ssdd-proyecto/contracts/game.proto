@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+option csharp_namespace = "Game.Contracts";
+package distributed_dice;
+
+//
+// Completar los huecos marcados con ###
+//
+
+service GameService {
+  rpc CreateGame (###) returns (GameReply);
+  rpc JoinGame (###) returns (GameReply);
+  rpc GetState (###) returns (GameReply);
+  rpc Roll (###) returns (GameReply);
+}
+
+### CreateGameRequest {
+  ### name = ###;
+  ### player_count = ###;
+}
+
+### JoinGameRequest {
+  ### name = ###;
+}
+
+### GetStateRequest {
+  ### game_id = ###;
+}
+
+### RollRequest {
+  ### game_id = ###;
+  ### player_id = ###;
+}
+
+### GameReply {
+  GameState state = ###;
+  string player_id = ###;
+  ### first_die = ###;
+  ### second_die = ###;
+  string event_delivery_warning = ###;
+}
+
+### GameState {
+  string game_id = ###;
+  string name = ###;
+  ### capacity = ###;
+  GameStatus status = ###;
+  repeated ### players = ###;
+  ### current_player_id = ###;
+  ### winner_id = ###;
+}
+
+### Player {
+  string player_id = ###;
+  ### number = ###;
+  ### score = ###;
+}
+
+enum GameStatus {
+  GAME_STATUS_WAITING_FOR_PLAYERS = 0;
+  GAME_STATUS_IN_PROGRESS = 1;
+  GAME_STATUS_FINISHED = 2;
+}
+
+### TurnEvent {
+  string game_id = ###;
+  ### current_player_number = ###;
+  ### winner_player_number = ###;
+}
+
+### PlayerScore {
+  ### player_id = ###;
+  ### player_number = ###;
+  ### score = ###;
+}
+
+### ScoresEvent {
+  ### game_id = ###;
+  repeated ### scores = ###;
+  ### winner_player_number = ###;
+}
